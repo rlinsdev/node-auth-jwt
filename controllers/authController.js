@@ -8,13 +8,13 @@ const handleErrors = (err) => {
 
     //console.log(err.message);
     // Incorrect email
-    if (err.message === 'incorrect email') {
-        errors.email = 'that email is not registred';
+    if (err.message === "incorrect email") {
+        errors.email = "that email is not registred";
     }
 
     // Incorrect password
-    if (err.message === 'incorrect password') {
-        errors.password = 'that password is not registred';
+    if (err.message === "incorrect password") {
+        errors.password = "that password is not registred";
     }
 
     // duplicate email error
@@ -81,4 +81,9 @@ module.exports.login_post = async(req, res) => {
 
     console.log(email, password);
     //res.send("user login");
+};
+
+module.exports.logout_get = (req, res) => {
+    res.cookie("jwt", "", { maxAge: 1 });
+    res.redirect('/')
 };
